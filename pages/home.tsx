@@ -1,11 +1,21 @@
-<<<<<<< HEAD
-import Home from "../pages/home";
-
-export default Home;
-=======
 import Head from "next/head";
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    axios
+      .get(
+        "https://api-sa-east-1.hygraph.com/v2/clg4k0jbw25dl01tdghh81uic/master"
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   return (
     <div
       style={{
@@ -22,4 +32,3 @@ export default function Home() {
     </div>
   );
 }
->>>>>>> f58381e139a94f17ae189d56eb8fecade8b0ed82
