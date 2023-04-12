@@ -1,20 +1,8 @@
 import Head from "next/head";
-import axios from "axios";
-import { useEffect } from "react";
+import GetApiContent from "../src/services/hygraphService";
 
 export default function Home() {
-  useEffect(() => {
-    axios
-      .get(
-        "https://api-sa-east-1.hygraph.com/v2/clg4k0jbw25dl01tdghh81uic/master"
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+  const test = GetApiContent();
 
   return (
     <div
@@ -29,6 +17,14 @@ export default function Home() {
         <title style={{}}>NextJS with Hygraph</title>
       </Head>
       <h1> NextJS with Hygraph </h1>
+      {test.map((itens) => (
+        <>
+          <ul key={itens.id}>
+            <li>{itens.id}</li>
+            <li>{itens.data1}</li>
+          </ul>
+        </>
+      ))}
     </div>
   );
 }
