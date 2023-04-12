@@ -1,26 +1,8 @@
 import Head from "next/head";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import hygraphServiceTypes from "../src/interfaces/hygraphService.types";
+import GetApiContent from "../src/services/hygraphService";
 
 export default function Home() {
-  const [hygraphData, getHygraphData] = useState<hygraphServiceTypes[]>([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api-sa-east-1.hygraph.com/v2/clg4k0jbw25dl01tdghh81uic/master",
-        { params: { query: `query getBdData { dataBase1S { id data1 } }` } }
-      )
-      .then((response) => {
-        getHygraphData(response.data.data.dataBase1S);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-
-  console.log(hygraphData);
+  const test = GetApiContent();
 
   return (
     <div
@@ -35,10 +17,12 @@ export default function Home() {
         <title style={{}}>NextJS with Hygraph</title>
       </Head>
       <h1> NextJS with Hygraph </h1>
-      {hygraphData.map((itens) => (
+      {test.map((itens) => (
         <>
-          <li key={itens.id}>{itens.id}</li>
-          <li>{itens.data1}</li>
+          <ul key={itens.id}>
+            <li>{itens.id}</li>
+            <li>{itens.data1}</li>
+          </ul>
         </>
       ))}
     </div>
