@@ -11,8 +11,8 @@ const GetApiContent = async () => {
 
   axios
     .get(
-      API_URL,
-      // "https://api-sa-east-1.hygraph.com/v2/clg4k0jbw25dl01tdghh81uic/master",
+      // API_URL,
+      "https://api-sa-east-1.hygraph.com/v2/clg4k0jbw25dl01tdghh81uic/master",
       { params: { query: `query getBdData { dataBase1S { id data1 } }` } }
     )
     .then((response) => {
