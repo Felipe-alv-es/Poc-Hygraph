@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const { API_URL } = process.env;
 
-const GetApiContent = async () => {
+const GetApiContent = () => {
   const [hygraphData, getHygraphData] = useState<hygraphServiceTypes[]>([]);
 
   console.log(API_URL);
