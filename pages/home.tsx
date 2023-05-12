@@ -1,12 +1,8 @@
 import Head from "next/head";
 import GetApiContent from "../src/services/hygraphService";
 
-const test = async () => {
-  await GetApiContent();
-};
-
 export default function Home() {
-  console.log(test);
+  const data = GetApiContent();
 
   return (
     <div
@@ -21,14 +17,14 @@ export default function Home() {
         <title style={{}}>NextJS with Hygraph</title>
       </Head>
       <h1> NextJS with Hygraph </h1>
-      {/* {test.map((itens) => (
+      {data.map((itens) => (
         <>
           <ul key={itens.id}>
             <li>{itens.id}</li>
             <li>{itens.data1}</li>
           </ul>
         </>
-      ))} */}
+      ))}
     </div>
   );
 }
