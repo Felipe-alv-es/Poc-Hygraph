@@ -1,14 +1,8 @@
 import Head from "next/head";
 import GetApiContent from "../src/services/hygraphService";
-import { useEffect, useState } from "react";
-import hygraphServiceTypes from "../src/interfaces/hygraphService.types";
 
 export default function Home() {
-  const [data, setData] = useState<hygraphServiceTypes[]>([]);
-
-  useEffect(() => {
-    return setData(GetApiContent);
-  }, []);
+  const data = GetApiContent();
 
   return (
     <div
